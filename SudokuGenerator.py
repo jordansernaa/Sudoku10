@@ -1,3 +1,7 @@
+    # The diagonal 3x3 boxes are filled first since they do not
+    # depend on any other part of the board. This makes the
+    # generation process simpler and avoids conflicts early on.
+
 import math, random
 
 
@@ -88,7 +92,7 @@ class SudokuGenerator:
             if self.board[row][col] != 0:
                 self.board[row][col] = 0
                 count -= 1
-            self.board[row][col] == 0
+            self.board[row][col] = 0
 
 
 def generate_sudoku(size, removed):
@@ -100,4 +104,5 @@ def generate_sudoku(size, removed):
     return board
     
         
+
 

@@ -14,6 +14,7 @@ pygame.display.set_caption("Sudoku")
 BG_COLOR = (255, 255, 255)
 LINE_COLOR = (255, 0, 0)
 SELECTED_COLOR = (255, 0, 0)
+RECT_COLOR = (155, 100, 100)
 FONT = pygame.font.SysFont('Arial', 40)
 SMALL_FONT = pygame.font.SysFont('Arial', 20)
 image_path = "sudoku_image.png"
@@ -34,6 +35,16 @@ def draw_start_screen():
     title_rect = title.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 150))
     SCREEN.blit(title, title_rect)
 
+    rect1 = pygame.Rect(WIDTH // 2 - 100, HEIGHT // 2 - 50, 200, 50)
+    pygame.draw.rect(SCREEN, RECT_COLOR, rect1)
+
+    rect2 = pygame.Rect(WIDTH // 2 - 100, HEIGHT // 2 + 20, 200, 50)
+    pygame.draw.rect(SCREEN, RECT_COLOR, rect2)
+
+    rect3 = pygame.Rect(WIDTH // 2 - 100, HEIGHT // 2 + 90, 200, 50)
+    pygame.draw.rect(SCREEN, RECT_COLOR, rect3)
+
+
     easy_button = pygame.Rect(WIDTH // 2 - 100, HEIGHT // 2 - 50, 200, 50)
     medium_button = pygame.Rect(WIDTH // 2 - 100, HEIGHT // 2 + 20, 200, 50)
     hard_button = pygame.Rect(WIDTH // 2 - 100, HEIGHT // 2 + 90, 200, 50)
@@ -42,14 +53,13 @@ def draw_start_screen():
     pygame.draw.rect(SCREEN, LINE_COLOR, medium_button, 2)
     pygame.draw.rect(SCREEN, LINE_COLOR, hard_button, 2)
 
-    easy_text = FONT.render("Easy", True, LINE_COLOR)
-    medium_text = FONT.render("Medium", True, LINE_COLOR)
-    hard_text = FONT.render("Hard", True, LINE_COLOR)
+    easy_text = FONT.render("Easy", True, BG_COLOR)
+    medium_text = FONT.render("Medium", True, BG_COLOR)
+    hard_text = FONT.render("Hard", True, BG_COLOR)
 
     SCREEN.blit(easy_text, easy_text.get_rect(center=easy_button.center))
     SCREEN.blit(medium_text, medium_text.get_rect(center=medium_button.center))
     SCREEN.blit(hard_text, hard_text.get_rect(center=hard_button.center))
-
 
     pygame.display.flip()
 
@@ -84,7 +94,7 @@ def draw_end_screen(win):
     if win:
         end_text = end_font.render("Game Won!", True, (0, 255, 0))
     else:
-        end_text = end_font.render("Game Over", True, (255, 0, 0))
+        end_text = end_font.render("Game Over! You lost :(", True, (255, 0, 0))
     
     end_rect = end_text.get_rect(center=(WIDTH // 2, HEIGHT // 2))
     SCREEN.blit(end_text, end_rect)

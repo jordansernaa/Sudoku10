@@ -12,13 +12,23 @@ SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Sudoku")
 
 BG_COLOR = (255, 255, 255)
-LINE_COLOR = (0, 0, 0)
+LINE_COLOR = (255, 0, 0)
 SELECTED_COLOR = (255, 0, 0)
 FONT = pygame.font.SysFont('Arial', 40)
 SMALL_FONT = pygame.font.SysFont('Arial', 20)
+image_path = "sudoku_image.png"
+image = pygame.image.load(image_path).convert_alpha()
+
+new_width = image.get_width() // 2
+new_height = image.get_height() // 2
+image = pygame.transform.scale(image, (new_width, new_height))
+
+image_x = -50
+image_y = -40
 
 def draw_start_screen():
     SCREEN.fill(BG_COLOR)
+    SCREEN.blit(image, (image_x, image_y))
     title_font = pygame.font.SysFont('Arial', 70)
     title = title_font.render("Sudoku", True, LINE_COLOR)
     title_rect = title.get_rect(center=(WIDTH // 2, HEIGHT // 2 - 150))
@@ -39,6 +49,7 @@ def draw_start_screen():
     SCREEN.blit(easy_text, easy_text.get_rect(center=easy_button.center))
     SCREEN.blit(medium_text, medium_text.get_rect(center=medium_button.center))
     SCREEN.blit(hard_text, hard_text.get_rect(center=hard_button.center))
+
 
     pygame.display.flip()
 

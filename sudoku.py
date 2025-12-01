@@ -6,7 +6,6 @@ from SudokuGenerator import SudokuGenerator
 
 pygame.init()
 
-# Constants
 WIDTH, HEIGHT = 540, 600
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Sudoku")
@@ -68,7 +67,6 @@ def draw_start_screen():
 def draw_game_screen(board):
     SCREEN.fill(BG_COLOR)
     board.draw()
-    # Draw buttons
     reset_button = pygame.Rect(50, HEIGHT - 50, 100, 40)
     restart_button = pygame.Rect(220, HEIGHT - 50, 100, 40)
     exit_button = pygame.Rect(390, HEIGHT - 50, 100, 40)

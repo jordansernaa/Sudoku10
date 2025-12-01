@@ -5,6 +5,8 @@ from Cell import Cell
 from SudokuGenerator import SudokuGenerator
 
 pygame.init()
+pygame.display.set_caption("Sudoku Game")
+
 
 WIDTH, HEIGHT = 540, 600
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
